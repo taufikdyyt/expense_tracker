@@ -5,7 +5,7 @@ import 'db_helper.dart';
 class AddEditTransactionPage extends StatefulWidget {
   final my_model.Transaction? transaction;
 
-  AddEditTransactionPage({this.transaction});
+  const AddEditTransactionPage({super.key, this.transaction});
 
   @override
   _AddEditTransactionPageState createState() => _AddEditTransactionPageState();
@@ -100,7 +100,7 @@ class _AddEditTransactionPageState extends State<AddEditTransactionPage> {
             children: [
               TextFormField(
                 controller: _titleController,
-                decoration: InputDecoration(labelText: 'Judul'),
+                decoration: const InputDecoration(labelText: 'Judul'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Judul tidak boleh kosong';
@@ -110,7 +110,7 @@ class _AddEditTransactionPageState extends State<AddEditTransactionPage> {
               ),
               TextFormField(
                 controller: _amountController,
-                decoration: InputDecoration(labelText: 'Jumlah'),
+                decoration: const InputDecoration(labelText: 'Jumlah'),
                 keyboardType: TextInputType.number,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -124,7 +124,7 @@ class _AddEditTransactionPageState extends State<AddEditTransactionPage> {
               ),
               DropdownButtonFormField<String>(
                 value: _selectedType,
-                decoration: InputDecoration(labelText: 'Jenis Transaksi'),
+                decoration: const InputDecoration(labelText: 'Jenis Transaksi'),
                 items: ['Pemasukan', 'Pengeluaran']
                     .map((type) => DropdownMenuItem(
                           value: type,
@@ -143,34 +143,34 @@ class _AddEditTransactionPageState extends State<AddEditTransactionPage> {
                   return null;
                 },
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Row(
                 children: [
                   Expanded(
                     child: Text(
                       'Tanggal: ${_selectedDate.toLocal()}'.split(' ')[0],
-                      style: TextStyle(fontSize: 16),
+                      style: const TextStyle(fontSize: 16),
                     ),
                   ),
                   ElevatedButton(
                     onPressed: _pickDate,
-                    child: Text('Pilih Tanggal'),
+                    child: const Text('Pilih Tanggal'),
                   ),
                 ],
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   ElevatedButton(
                     onPressed: _saveTransaction,
-                    child: Text('Simpan'),
+                    child: const Text('Simpan'),
                   ),
                   if (widget.transaction != null)
                     ElevatedButton(
                       onPressed: _deleteTransaction,
                       style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-                      child: Text('Hapus'),
+                      child: const Text('Hapus'),
                     ),
                 ],
               ),
